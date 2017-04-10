@@ -16,7 +16,7 @@ Awesome awesome;
  */
 
 // declare variables here
-int delayTime=5;
+int delayTime=30;
 
 void setup() {
   awesome.setup(9600);
@@ -25,6 +25,10 @@ void setup() {
 }
 
 void loop() {
+  // start on red
+  awesome.LED.turnOn(RED);
+  delay(1000);
+  
   // red to yellow
   for (int i = 0; i <= 85; i++ ) {
     awesome.LED.turnOn(255,i,0);
@@ -34,20 +38,22 @@ void loop() {
   // yellow to green
   for (int i = 0; i <= 255-85; i++ ) {
     awesome.LED.turnOn(255-i,85+i,0);
-    delay(delayTime);
+    delay(delayTime/2);
   }
 
   // green to blue
   for (int i = 0; i <= 255; i++ ) {
     awesome.LED.turnOn(0,255-i,i);
-    delay(delayTime);
+    delay(delayTime/3);
   }
 
   // blue to violet
   for (int i = 0; i <= 255; i++ ) {
     awesome.LED.turnOn(i,0,255);
-    delay(delayTime);
+    delay(delayTime/3);
   }
+  // hold on purple
+  delay(1000);
   
   // signal end of loop
   awesome.LED.turnOff();
